@@ -7,8 +7,8 @@
         <title>Laravel</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
         <!-- Styles -->
         <style>
@@ -39,14 +39,29 @@
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
 
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
+                <table class="table mt-5" style="width: 100%">
+                    <tr>
+                        <th>{{__('photo')}}</th>
+                        <th>{{__('Zip code')}}</th>
+                        <th>{{__('bathrooms')}}</th>
+                        <th>{{__('bedroms')}}</th>
+                        <th>{{__('sqft')}}</th>
+                        <th>{{__('House type')}}</th>
+                        <th>{{__('email')}}</th>
+                    </tr>
+                    @foreach($rentals as $item)
+                        <tr>
+                            <th><img style="width: 100px;" class="rounded" src="{{$item->photo}}"></th>
+                            <td>{{$item->zip_code}}</td>
+                            <td>{{$item->bathrooms}}</td>
+                            <td>{{$item->beds}}</td>
+                            <td>{{$item->sqft}}</td>
+                            <td>{{$item->house_type}}</td>
+                            <td>{{$item->user->email}}</td>
+                        </tr>
+                    @endforeach
+                </table>
+
 
             </div>
         </div>

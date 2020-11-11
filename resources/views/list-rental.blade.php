@@ -14,20 +14,25 @@
 
                 <table class="table mt-5" style="width: 100%">
                     <tr>
+                        <th>{{__('photo')}}</th>
                         <th>{{__('Zip code')}}</th>
                         <th>{{__('bathrooms')}}</th>
                         <th>{{__('bedroms')}}</th>
                         <th>{{__('sqft')}}</th>
                         <th>{{__('House type')}}</th>
+                        <th>{{__('Action')}}</th>
                     </tr>
+                    @foreach(\Auth::user()->rentals as $item)
                     <tr>
-                        <td>1333</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
+                        <th><img style="width: 100px;" class="rounded" src="{{$item->photo}}"></th>
+                        <td>{{$item->zip_code}}</td>
+                        <td>{{$item->bathrooms}}</td>
+                        <td>{{$item->beds}}</td>
+                        <td>{{$item->sqft}}</td>
+                        <td>{{$item->house_type}}</td>
+                        <td><a href="{{route('destroy',$item->id)}}" onclick="return confirm('Are you sure you want to remove this rental?')">{{__('Remove')}}</a></td>
                     </tr>
-
+                    @endforeach
                 </table>
             </div>
         </div>

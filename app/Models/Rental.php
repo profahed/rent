@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Rental extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'zip_code',
+        'bathrooms',
+        'beds',
+        'sqft',
+        'house_type',
+        'photo',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

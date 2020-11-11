@@ -15,6 +15,14 @@ class CreateRentalsTable extends Migration
     {
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
+            $table->string('zip_code');
+            $table->integer('bathrooms');
+            $table->integer('beds');
+            $table->integer('sqft');
+            $table->enum('house_type', ['single family house', 'haunted house', 'apartment', 'wood shed', 'tent', 'open air']);
+            $table->string('photo')->nullable();
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
